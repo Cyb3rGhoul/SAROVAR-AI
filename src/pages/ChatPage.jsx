@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Mic, Send, Upload, Settings, X } from 'lucide-react';
+import { Mic, Send, Upload, Settings, X, Menu } from 'lucide-react';
 import { generateGeminiResponse } from '../utils/geminiApi.js';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../contexts/LanguageContext.jsx';
@@ -9,9 +9,26 @@ const ChatPage = () => {
   const [input, setInput] = useState('');
   const [isListening, setIsListening] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [activeChatMode, setActiveChatMode] = useState('crop');
   const messagesEndRef = useRef(null);
   const { t } = useTranslation();
   const { language, changeLanguage } = useLanguage();
+
+  // Responsive sidebar handling
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setIsSidebarOpen(false);
+      } else {
+        setIsSidebarOpen(true);
+      }
+    };
+
+    handleResize(); // Set initial state
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -22,13 +39,27 @@ const ChatPage = () => {
   const handleSendMessage = async () => {
     if (input.trim() === '') return;
 
-    const userMessage = { text: input, sender: 'user' };
+    const userMessage = { 
+      text: input, 
+      sender: 'user',
+      mode: activeChatMode 
+    };
     setMessages(prev => [...prev, userMessage]);
     setInput('');
 
     try {
-      const response = await generateGeminiResponse(input);
-      const aiMessage = { text: response, sender: 'ai' };
+      // Modify prompt based on active chat mode
+      let prompt = input;
+      if (activeChatMode !== 'crop') {
+        prompt = `${t(`navbar.${activeChatMode}`)} advice: ${input}`;
+      }
+
+      const response = await generateGeminiResponse(prompt);
+      const aiMessage = { 
+        text: response, 
+        sender: 'ai',
+        mode: activeChatMode 
+      };
       setMessages(prev => [...prev, aiMessage]);
     } catch (error) {
       console.error('Error sending message:', error);
@@ -60,12 +91,20 @@ const ChatPage = () => {
         const userMessage = { 
           text: `Analyze this image and response in the language ${language}`,
           sender: 'user',
-          image: base64Image 
+          image: base64Image,
+          mode: activeChatMode
         };
         setMessages(prev => [...prev, userMessage]);
         
-        const response = await generateGeminiResponse("Analyze this image", base64Image);
-        const aiMessage = { text: response, sender: 'ai' };
+        const response = await generateGeminiResponse(
+          `Analyze this image for ${t(`navbar.${activeChatMode}`)}`, 
+          base64Image
+        );
+        const aiMessage = { 
+          text: response, 
+          sender: 'ai',
+          mode: activeChatMode
+        };
         setMessages(prev => [...prev, aiMessage]);
       };
       reader.readAsDataURL(file);
@@ -75,41 +114,75 @@ const ChatPage = () => {
   };
 
   const renderMessages = () => {
-    return messages.map((msg, index) => (
-      <div key={index} className={`...`}>
-        {msg.image && (
-          <img 
-            src={`data:image/jpeg;base64,${msg.image}`} 
-            alt="Uploaded content"
-            className="max-w-xs mb-2 rounded-lg"
-          />
-        )}
-        {msg.text}
-      </div>
-    ));
+    return messages
+      .filter(msg => msg.mode === activeChatMode) // Only show messages for current mode
+      .map((msg, index) => (
+        <div 
+          key={index} 
+          className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+        >
+          <div 
+            className={`max-w-3/4 p-4 rounded-lg ${
+              msg.sender === 'user' 
+                ? 'bg-blue-500 text-white rounded-br-none' 
+                : 'bg-gray-200 text-gray-800 rounded-bl-none'
+            }`}
+          >
+            {msg.image && (
+              <img 
+                src={`data:image/jpeg;base64,${msg.image}`} 
+                alt="Uploaded content"
+                className="max-w-xs mb-2 rounded-lg"
+              />
+            )}
+            <p className="whitespace-pre-wrap">{msg.text}</p>
+          </div>
+        </div>
+      ));
   };
 
   const sidebarItems = [
-    { key: 'crop', icon: null },
-    { key: 'rainwater', icon: null },
-    { key: 'bestCrop', icon: null },
-    { key: 'waterResource', icon: null }
+    { key: 'crop', icon: null, label: 'crop' },
+    { key: 'rainwater', icon: null, label: 'rainwater' },
+    { key: 'bestCrop', icon: null, label: 'bestCrop' },
+    { key: 'waterResource', icon: null, label: 'waterResource' }
   ];
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   return (
     <div className="flex h-screen bg-gradient-to-br from-blue-50 to-blue-100 p-4">
+      {/* Mobile Sidebar Toggle Button */}
+      <button
+        onClick={toggleSidebar}
+        className="md:hidden fixed top-4 left-4 z-50 bg-blue-500 text-white p-2 rounded-full"
+      >
+        {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
+      </button>
+
       <div className="flex w-full bg-white rounded-2xl shadow-2xl overflow-hidden">
         {/* Side Navbar */}
-        <div className="w-64 bg-blue-900 text-white p-6 space-y-2">
+        <div 
+          className={`${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
+          md:translate-x-0 transform transition-transform duration-300 ease-in-out
+          fixed md:static w-64 h-full bg-blue-900 text-white p-6 space-y-2 z-40`}
+        >
           <h2 className="text-xl font-bold mb-6">S.A.R.O.V.A.R</h2>
           <div className="space-y-4">
             {sidebarItems.map((item) => (
               <div 
                 key={item.key} 
-                className="cursor-pointer hover:bg-blue-700 p-3 rounded-lg transition-all duration-300 ease-in-out flex items-center space-x-3"
+                onClick={() => {
+                  setActiveChatMode(item.key);
+                  if (window.innerWidth < 768) setIsSidebarOpen(false);
+                }}
+                className={`cursor-pointer hover:bg-blue-700 p-3 rounded-lg transition-all duration-300 ease-in-out flex items-center space-x-3
+                ${activeChatMode === item.key ? 'bg-blue-800' : ''}`}
               >
                 {item.icon}
-                <span>{t(`navbar.${item.key}`)}</span>
+                <span>{t(`navbar.${item.label}`)}</span>
               </div>
             ))}
           </div>
@@ -123,9 +196,26 @@ const ChatPage = () => {
 
         {/* Chat Area */}
         <div className="flex-1 flex flex-col">
+          {/* Chat Mode Header */}
+          <div className="bg-blue-100 p-4 border-b border-blue-200">
+            <h2 className="text-xl font-semibold text-blue-800">
+              {t(`navbar.${activeChatMode}`)}
+            </h2>
+          </div>
+
           {/* Messages Container */}
           <div className="flex-1 overflow-y-auto p-6 space-y-4 flex flex-col bg-gray-50">
-            {renderMessages()}
+            {messages.filter(msg => msg.mode === activeChatMode).length === 0 ? (
+              <div className="flex-1 flex items-center justify-center">
+                <p className="text-gray-500 text-center">
+                  {t('chatPage.noMessages')} {t(`navbar.${activeChatMode}`)}.
+                  <br />
+                  {t('chatPage.startChatting')}
+                </p>
+              </div>
+            ) : (
+              renderMessages()
+            )}
             <div ref={messagesEndRef} />
           </div>
 
@@ -183,7 +273,7 @@ const ChatPage = () => {
             >
               <X size={24} className="text-gray-600" />
             </button>
-            <h2 className="text-2xl font-bold mb-6 text-center">Select Language</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center">{t('settings.selectLanguage')}</h2>
             <div className="space-y-4">
               {[
                 { code: 'en', name: 'English' },
