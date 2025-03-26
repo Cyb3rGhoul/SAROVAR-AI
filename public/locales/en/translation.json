@@ -1,0 +1,11 @@
+{
+    "navbar": {
+      "crop": "Crop Analysis",
+      "rainwater": "Rainwater Harvesting",
+      "bestCrop": "Best Crops",
+      "waterResource": "Water Resources"
+    },
+    "chatPage": {
+      "placeholder": "Ask me about agriculture..."
+    }
+  }

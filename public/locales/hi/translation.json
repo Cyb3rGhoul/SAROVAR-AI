@@ -1,0 +1,11 @@
+{
+    "navbar": {
+      "crop": "फसल विश्लेषण",
+      "rainwater": "वर्षा जल संचयन",
+      "bestCrop": "सर्वोत्तम फसलें",
+      "waterResource": "जल संसाधन"
+    },
+    "chatPage": {
+      "placeholder": "कृषि के बारे में पूछें..."
+    }
+  } 

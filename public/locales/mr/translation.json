@@ -1,0 +1,11 @@
+{
+    "navbar": {
+      "crop": "पीक विश्लेषण",
+      "rainwater": "पाऊस पाणी संग्रहण",
+      "bestCrop": "उत्तम पिके",
+      "waterResource": "जल संसाधने"
+    },
+    "chatPage": {
+      "placeholder": "शेतीबाबत विचारा..."
+    }
+  }
