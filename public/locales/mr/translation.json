@@ -38,7 +38,9 @@
     "location": "स्थान प्रविष्ट करा",
     "noMessagesTitle": "अजून कोणतेही संदेश नाहीत.",
     "noMessagesDescription": "सुरू करण्यासाठी चॅट करा!",
-    "locationPlaceholder": "उदा., सर्वाधिक स्थान"
+    "locationPlaceholder": "उदा., सर्वाधिक स्थान",
+    "openPanel": "पैनल उघडा",
+    "closePanel": "पैनल बंद करा"
   },
   "settings": {
     "title": "सेटिंग्ज",

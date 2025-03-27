@@ -8,6 +8,7 @@ import RainwaterMode from '../components/ChatPage/RainwaterMode.jsx';
 import BestCropMode from '../components/ChatPage/BestCropMode.jsx';
 import WaterResourceMode from '../components/ChatPage/WaterResourceMode.jsx';
 import ChatMessage from '../components/ChatPage/ChatMessage.jsx';
+import MobileChatModes from '../components/ChatPage/MobileChatMode.jsx';
 
 const ChatPage = () => {
   const [messages, setMessages] = useState([]);
@@ -19,18 +20,19 @@ const ChatPage = () => {
   const messagesEndRef = useRef(null);
   const { t, i18n } = useTranslation();
   const { language, changeLanguage } = useLanguage();
+  const [isMobilePanelOpen, setIsMobilePanelOpen] = useState(false);
 
   // Handle sending messages with proper prompts
   const handleSendMessage = async (prompt, data) => {
     if (!prompt && input.trim() === '') return;
 
-    const userMessage = { 
+    const userMessage = {
       text: prompt || input,
       sender: 'user',
       mode: activeChatMode,
       data
     };
-    
+
     setMessages(prev => [...prev, userMessage]);
     setInput('');
 
@@ -38,16 +40,16 @@ const ChatPage = () => {
       // Add language instruction to the prompt
       const fullPrompt = `${prompt || input}\n\nPlease respond in ${language} language. 
         Format your response in markdown with proper headings, bullet points and sections.`;
-      
+
       const response = await generateGeminiResponse(fullPrompt);
-      
-      const aiMessage = { 
-        text: response, 
+
+      const aiMessage = {
+        text: response,
         sender: 'ai',
         mode: activeChatMode,
         timestamp: new Date().toISOString()
       };
-      
+
       setMessages(prev => [...prev, aiMessage]);
     } catch (error) {
       console.error('Error sending message:', error);
@@ -63,9 +65,9 @@ const ChatPage = () => {
 
   const startVoiceInput = () => {
     const recognition = new window.webkitSpeechRecognition();
-    recognition.lang = language === 'hi' ? 'hi-IN' : 
-                     language === 'mr' ? 'mr-IN' : 'en-US';
-    
+    recognition.lang = language === 'hi' ? 'hi-IN' :
+      language === 'mr' ? 'mr-IN' : 'en-US';
+
     recognition.onstart = () => setIsListening(true);
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript;
@@ -78,25 +80,25 @@ const ChatPage = () => {
   const handleImageUpload = async (event) => {
     const file = event.target.files[0];
     if (!file) return;
-  
+
     try {
       const reader = new FileReader();
       reader.onload = async (e) => {
         const base64Image = e.target.result.split(',')[1];
-        const userMessage = { 
+        const userMessage = {
           text: `Analyze this image for ${t(`navbar.${activeChatMode}`)}`,
           sender: 'user',
           image: base64Image,
           mode: activeChatMode
         };
         setMessages(prev => [...prev, userMessage]);
-        
+
         const response = await generateGeminiResponse(
-          `Analyze this image for ${t(`navbar.${activeChatMode}`)}`, 
+          `Analyze this image for ${t(`navbar.${activeChatMode}`)}`,
           base64Image
         );
-        const aiMessage = { 
-          text: response, 
+        const aiMessage = {
+          text: response,
           sender: 'ai',
           mode: activeChatMode
         };
@@ -112,20 +114,19 @@ const ChatPage = () => {
     return messages
       .filter(msg => msg.mode === activeChatMode)
       .map((msg, index) => (
-        <div 
-          key={index} 
+        <div
+          key={index}
           className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
         >
-          <div 
-            className={`max-w-3/4 p-4 rounded-lg ${
-              msg.sender === 'user' 
-                ? 'bg-blue-500 text-white rounded-br-none' 
+          <div
+            className={`max-w-3/4 p-4 rounded-lg ${msg.sender === 'user'
+                ? 'bg-blue-500 text-white rounded-br-none'
                 : 'bg-gray-200 text-gray-800 rounded-bl-none'
-            }`}
+              }`}
           >
             {msg.image && (
-              <img 
-                src={`data:image/jpeg;base64,${msg.image}`} 
+              <img
+                src={`data:image/jpeg;base64,${msg.image}`}
                 alt="Uploaded content"
                 className="max-w-xs mb-2 rounded-lg"
               />
@@ -174,14 +175,14 @@ const ChatPage = () => {
 
       {/* Sidebar Overlay for mobile */}
       {isSidebarOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
           onClick={toggleSidebar}
         ></div>
       )}
       <div className="flex w-full h-full">
         {/* Sidebar */}
-        <div 
+        <div
           className={`${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
           md:translate-x-0 transform transition-transform duration-300 ease-in-out
           fixed md:relative w-72 h-full bg-blue-800 text-white z-40`}
@@ -191,7 +192,7 @@ const ChatPage = () => {
             <div className="flex-1 space-y-2 overflow-y-auto">
               {sidebarItems.map((item) => (
                 <button
-                  key={item.key} 
+                  key={item.key}
                   onClick={() => {
                     setActiveChatMode(item.key);
                     if (window.innerWidth < 768) setIsSidebarOpen(false);
@@ -243,7 +244,7 @@ const ChatPage = () => {
                     .filter(msg => msg.mode === activeChatMode)
                     .map((msg, index) => (
                       <ChatMessage key={`${msg.timestamp || index}`} message={msg} />
-                  ))}
+                    ))}
                   <div ref={messagesEndRef} />
                 </div>
               )}
@@ -262,31 +263,55 @@ const ChatPage = () => {
           </div>
 
           {/* Mobile Input Area */}
-          <div className="lg:hidden bg-white p-4 border-t border-gray-200">
-            {activeChatMode === 'crop' && <CropMode onSubmit={handleSendMessage} />}
-            {activeChatMode === 'rainwater' && <RainwaterMode onSubmit={handleSendMessage} />}
-            {activeChatMode === 'bestCrop' && <BestCropMode onSubmit={handleSendMessage} />}
-            {activeChatMode === 'waterResource' && <WaterResourceMode onSubmit={handleSendMessage} />}
+          {/* Mobile Input Area */}
+          <div className="lg:hidden">
+            {/* Toggle Button */}
+            <button
+              onClick={() => setIsMobilePanelOpen(!isMobilePanelOpen)}
+              className="w-full bg-blue-500 text-white p-3 flex items-center justify-center"
+            >
+              {isMobilePanelOpen ? (
+                <>
+                  <X size={18} className="mr-2" />
+                  {t('chatPage.closePanel')}
+                </>
+              ) : (
+                <>
+                  <Menu size={18} className="mr-2" />
+                  {t('chatPage.openPanel')}
+                </>
+              )}
+            </button>
+
+            {/* Panel Content */}
+            {isMobilePanelOpen && (
+              <div className="bg-white p-4 border-t border-gray-200">
+                {activeChatMode === 'crop' && <CropMode onSubmit={handleSendMessage} />}
+                {activeChatMode === 'rainwater' && <RainwaterMode onSubmit={handleSendMessage} />}
+                {activeChatMode === 'bestCrop' && <BestCropMode onSubmit={handleSendMessage} />}
+                {activeChatMode === 'waterResource' && <WaterResourceMode onSubmit={handleSendMessage} />}
+              </div>
+            )}
           </div>
 
           {/* General Input Area */}
           <div className="bg-white p-4 border-t border-gray-200 flex items-center space-x-2">
-          <input 
-              type="file" 
-              accept="image/*" 
-              className="hidden" 
+            <input
+              type="file"
+              accept="image/*"
+              className="hidden"
               id="image-upload"
               onChange={handleImageUpload}
             />
-            <label 
-              htmlFor="image-upload" 
+            <label
+              htmlFor="image-upload"
               className="cursor-pointer hover:bg-gray-100 p-2 rounded-full"
             >
               <Upload size={24} className="text-gray-600" />
             </label>
 
-            <input 
-              type="text" 
+            <input
+              type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder={t('chatPage.placeholder')}
@@ -294,16 +319,15 @@ const ChatPage = () => {
               onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
             />
 
-            <button 
+            <button
               onClick={startVoiceInput}
-              className={`p-2 rounded-full ${
-                isListening ? 'bg-red-500' : 'bg-blue-500'
-              } text-white transition-all duration-300`}
+              className={`p-2 rounded-full ${isListening ? 'bg-red-500' : 'bg-blue-500'
+                } text-white transition-all duration-300`}
             >
               <Mic size={24} />
             </button>
 
-            <button 
+            <button
               onClick={handleSendMessage}
               className="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 transition-all duration-300"
             >
@@ -317,7 +341,7 @@ const ChatPage = () => {
       {isSettingsOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-8 rounded-2xl shadow-2xl relative w-96">
-            <button 
+            <button
               onClick={() => setIsSettingsOpen(false)}
               className="absolute top-4 right-4 hover:bg-gray-100 rounded-full p-2"
             >
@@ -336,11 +360,10 @@ const ChatPage = () => {
                     changeLanguage(code);
                     setIsSettingsOpen(false);
                   }}
-                  className={`w-full p-3 rounded-lg transition-all duration-300 ${
-                    language === code 
-                      ? 'bg-blue-500 text-white' 
+                  className={`w-full p-3 rounded-lg transition-all duration-300 ${language === code
+                      ? 'bg-blue-500 text-white'
                       : 'bg-gray-200 hover:bg-gray-300'
-                  }`}
+                    }`}
                 >
                   {name}
                 </button>

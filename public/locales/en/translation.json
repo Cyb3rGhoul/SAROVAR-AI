@@ -38,7 +38,9 @@
     "location": "Enter Location",
     "noMessagesTitle": "No messages yet.",
     "noMessagesDescription": "Start chatting to get started!",
-    "locationPlaceholder": "e.g., City, State, Country"
+    "locationPlaceholder": "e.g., City, State, Country",
+    "openPanel": "Open Input Panel",
+    "closePanel": "Close Input Panel"
   },
   "settings": {
     "title": "Settings",

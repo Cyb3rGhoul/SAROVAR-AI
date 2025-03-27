@@ -38,7 +38,9 @@
     "location": "स्थान दर्ज करें",
     "noMessagesTitle": "अभी तक कोई संदेश नहीं।",
     "noMessagesDescription": "शुरू करने के लिए चैट करें!",
-    "locationPlaceholder": "उदा., शहर, राज्य"
+    "locationPlaceholder": "उदा., शहर, राज्य",
+    "openPanel": "पैनल खोलें",
+    "closePanel": "पैनल बंद करें"
   },
   "settings": {
     "title": "सेटिंग्स",
