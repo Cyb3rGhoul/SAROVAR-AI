@@ -45,7 +45,7 @@
     "humidity": "Humidity",
     "soilType": "Soil Type",
     "waterAvailability": "Water Availability",
-    "getReccomendations": "Get Crop Recommendations",
+    "getRecommendations": "Get Crop Recommendations",
     "selectSoil": "Select Soil Type",
     "selectWater": "Select Water Level",
     "high": "High",

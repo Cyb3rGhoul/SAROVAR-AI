@@ -45,7 +45,7 @@
     "humidity": "नमी",
     "soilType": "मिट्टी का प्रकार",
     "waterAvailability": "पानी की उपलब्धता",
-    "getReccomendations": "फसल की सिफारिशें प्राप्त करें",
+    "getRecommendations": "फसल की सिफारिशें प्राप्त करें",
     "selectSoil": "मिट्टी का प्रकार चुनें",
     "selectWater": "पानी का स्तर चुनें",
     "high": "उच्च",

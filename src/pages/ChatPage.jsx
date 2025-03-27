@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Mic, Send, Upload, Settings, X, Menu } from 'lucide-react';
+import { Mic, Send, Upload, Settings, X, Menu, ChevronLeft, ChevronRight } from 'lucide-react';
 import { generateGeminiResponse } from '../utils/geminiApi.js';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../contexts/LanguageContext.jsx';
@@ -8,7 +8,6 @@ import RainwaterMode from '../components/ChatPage/RainwaterMode.jsx';
 import BestCropMode from '../components/ChatPage/BestCropMode.jsx';
 import WaterResourceMode from '../components/ChatPage/WaterResourceMode.jsx';
 import ChatMessage from '../components/ChatPage/ChatMessage.jsx';
-import MobileChatModes from '../components/ChatPage/MobileChatMode.jsx';
 
 const ChatPage = () => {
   const [messages, setMessages] = useState([]);
@@ -120,8 +119,8 @@ const ChatPage = () => {
         >
           <div
             className={`max-w-3/4 p-4 rounded-lg ${msg.sender === 'user'
-                ? 'bg-blue-500 text-white rounded-br-none'
-                : 'bg-gray-200 text-gray-800 rounded-bl-none'
+              ? 'bg-blue-500 text-white rounded-br-none'
+              : 'bg-gray-200 text-gray-800 rounded-bl-none'
               }`}
           >
             {msg.image && (
@@ -168,9 +167,9 @@ const ChatPage = () => {
       {/* Sidebar and main content */}
       <button
         onClick={toggleSidebar}
-        className="md:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-lg shadow-lg"
+        className="md:hidden fixed top-1/2 -translate-y-1/2 left-0 z-50 bg-blue-600 text-white p-2 rounded-r-lg shadow-lg transition-all duration-300"
       >
-        {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
+        {isSidebarOpen ? <ChevronLeft size={16} /> : <ChevronRight size={16} />}
       </button>
 
       {/* Sidebar Overlay for mobile */}
@@ -361,8 +360,8 @@ const ChatPage = () => {
                     setIsSettingsOpen(false);
                   }}
                   className={`w-full p-3 rounded-lg transition-all duration-300 ${language === code
-                      ? 'bg-blue-500 text-white'
-                      : 'bg-gray-200 hover:bg-gray-300'
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-gray-200 hover:bg-gray-300'
                     }`}
                 >
                   {name}
