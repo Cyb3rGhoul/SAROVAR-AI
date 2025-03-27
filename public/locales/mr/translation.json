@@ -1,11 +1,46 @@
 {
-    "navbar": {
-      "crop": "पीक विश्लेषण",
-      "rainwater": "पाऊस पाणी संग्रहण",
-      "bestCrop": "उत्तम पिके",
-      "waterResource": "जल संसाधने"
-    },
-    "chatPage": {
-      "placeholder": "शेतीबाबत विचारा..."
-    }
+  "navbar": {
+    "crop": "पीक विश्लेषण",
+    "rainwater": "पावसाचे पाणी साठवणूक",
+    "bestCrop": "सर्वोत्तम पिके",
+    "waterResource": "जल संसाधने"
+  },
+  "chatPage": {
+    "placeholder": "कृषीविषयी विचारा...",
+    "noMessages": "अजून कोणतेही संदेश नाहीत.",
+    "startChatting": "चॅटिंग सुरू करा!",
+    "cropName": "पीकाचे नाव",
+    "cropPlaceholder": "उदा., गहू, तांदूळ, कापूस",
+    "plantingSeason": "लागवडीचा हंगाम",
+    "selectSeason": "हंगाम निवडा",
+    "spring": "वसंत",
+    "summer": "उन्हाळा",
+    "monsoon": "पावसाळा",
+    "autumn": "शरद",
+    "winter": "हिवाळा",
+    "getCropInfo": "पीक माहिती मिळवा",
+    "roofArea": "छताचे क्षेत्रफळ",
+    "annualRainfall": "वार्षिक पावसाळा",
+    "currentWaterStorage": "सध्याचे जल साठवण",
+    "selectOption": "पर्याय निवडा",
+    "none": "काही नाही",
+    "small": "लहान",
+    "medium": "मध्यम",
+    "large": "मोठे",
+    "getRainwaterSolutions": "पावसाचे पाणी साठवण उपाय मिळवा",
+    "waterSources": "सध्याचे जल स्रोत",
+    "sourcesPlaceholder": "उदा., महापालिका पुरवठा, विहीर, तलाव",
+    "dailyUsage": "दैनंदिन जल वापर",
+    "currentIssues": "सध्याच्या जल समस्या",
+    "issuesPlaceholder": "उदा., तुटवडा, गुणवत्ता समस्या",
+    "getWaterAnalysis": "जल विश्लेषण मिळवा",
+    "enterDetails": "तपशील प्रविष्ट करा",
+    "location": "स्थान प्रविष्ट करा",
+    "noMessagesTitle": "अजून कोणतेही संदेश नाहीत.",
+    "noMessagesDescription": "सुरू करण्यासाठी चॅट करा!",
+    "locationPlaceholder": "उदा., सर्वाधिक स्थान"
+  },
+  "settings": {
+    "title": "सेटिंग्ज"
   }
+}

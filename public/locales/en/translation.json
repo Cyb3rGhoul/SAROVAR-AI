@@ -1,11 +1,46 @@
 {
-    "navbar": {
-      "crop": "Crop Analysis",
-      "rainwater": "Rainwater Harvesting",
-      "bestCrop": "Best Crops",
-      "waterResource": "Water Resources"
-    },
-    "chatPage": {
-      "placeholder": "Ask me about agriculture..."
-    }
+  "navbar": {
+    "crop": "Crop Analysis",
+    "rainwater": "Rainwater Harvesting",
+    "bestCrop": "Best Crops",
+    "waterResource": "Water Resources"
+  },
+  "chatPage": {
+    "placeholder": "Ask me about agriculture...",
+    "noMessages": "No messages yet.",
+    "startChatting": "Start chatting!",
+    "cropName": "Crop Name",
+    "cropPlaceholder": "e.g., Wheat, Rice, Cotton",
+    "plantingSeason": "Planting Season",
+    "selectSeason": "Select Season",
+    "spring": "Spring",
+    "summer": "Summer",
+    "monsoon": "Monsoon",
+    "autumn": "Autumn",
+    "winter": "Winter",
+    "getCropInfo": "Get Crop Information",
+    "roofArea": "Roof Area",
+    "annualRainfall": "Annual Rainfall",
+    "currentWaterStorage": "Current Water Storage",
+    "selectOption": "Select Option",
+    "none": "None",
+    "small": "Small",
+    "medium": "Medium",
+    "large": "Large",
+    "getRainwaterSolutions": "Get Rainwater Solutions",
+    "waterSources": "Current Water Sources",
+    "sourcesPlaceholder": "e.g., Municipal supply, borewell, pond",
+    "dailyUsage": "Daily Water Usage",
+    "currentIssues": "Current Water Issues",
+    "issuesPlaceholder": "e.g., Shortage, quality problems",
+    "getWaterAnalysis": "Get Water Analysis",
+    "enterDetails": "Enter Details",
+    "location": "Enter Location",
+    "noMessagesTitle": "No messages yet.",
+    "noMessagesDescription": "Start chatting to get started!",
+    "locationPlaceholder": "e.g., City, State, Country"
+  },
+  "settings": {
+    "title": "Settings"
   }
+}

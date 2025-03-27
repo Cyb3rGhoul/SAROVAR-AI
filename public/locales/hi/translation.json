@@ -1,11 +1,46 @@
 {
-    "navbar": {
-      "crop": "फसल विश्लेषण",
-      "rainwater": "वर्षा जल संचयन",
-      "bestCrop": "सर्वोत्तम फसलें",
-      "waterResource": "जल संसाधन"
-    },
-    "chatPage": {
-      "placeholder": "कृषि के बारे में पूछें..."
-    }
-  } 
+  "navbar": {
+    "crop": "फसल विश्लेषण",
+    "rainwater": "वर्षा जल संचयन",
+    "bestCrop": "सर्वोत्तम फसलें",
+    "waterResource": "जल संसाधन"
+  },
+  "chatPage": {
+    "placeholder": "कृषि के बारे में पूछें...",
+    "noMessages": "अभी तक कोई संदेश नहीं।",
+    "startChatting": "चैटिंग शुरू करें!",
+    "cropName": "फसल का नाम",
+    "cropPlaceholder": "उदा., गेहूं, चावल, कपास",
+    "plantingSeason": "बोआई का मौसम",
+    "selectSeason": "मौसम चुनें",
+    "spring": "वसंत",
+    "summer": "गर्मी",
+    "monsoon": "मानसून",
+    "autumn": "पतझड़",
+    "winter": "सर्दी",
+    "getCropInfo": "फसल की जानकारी प्राप्त करें",
+    "roofArea": "छत का क्षेत्रफल",
+    "annualRainfall": "वार्षिक वर्षा",
+    "currentWaterStorage": "वर्तमान जल भंडारण",
+    "selectOption": "विकल्प चुनें",
+    "none": "कुछ नहीं",
+    "small": "छोटा",
+    "medium": "मध्यम",
+    "large": "बड़ा",
+    "getRainwaterSolutions": "वर्षा जल समाधान प्राप्त करें",
+    "waterSources": "वर्तमान जल स्रोत",
+    "sourcesPlaceholder": "उदा., नगरपालिका आपूर्ति, बोरवेल, तालाब",
+    "dailyUsage": "दैनिक जल उपयोग",
+    "currentIssues": "वर्तमान जल समस्याएं",
+    "issuesPlaceholder": "उदा., कमी, गुणवत्ता समस्याएं",
+    "getWaterAnalysis": "जल विश्लेषण प्राप्त करें",
+    "enterDetails": "विवरण दर्ज करें",
+    "location": "स्थान दर्ज करें",
+    "noMessagesTitle": "अभी तक कोई संदेश नहीं।",
+    "noMessagesDescription": "शुरू करने के लिए चैट करें!",
+    "locationPlaceholder": "उदा., शहर, राज्य"
+  },
+  "settings": {
+    "title": "सेटिंग्स"
+  }
+}
