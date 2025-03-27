@@ -41,6 +41,7 @@
     "locationPlaceholder": "उदा., शहर, राज्य"
   },
   "settings": {
-    "title": "सेटिंग्स"
+    "title": "सेटिंग्स",
+    "selectLanguage": "भाषा चुनें"
   }
 }

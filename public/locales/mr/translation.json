@@ -41,6 +41,7 @@
     "locationPlaceholder": "उदा., सर्वाधिक स्थान"
   },
   "settings": {
-    "title": "सेटिंग्ज"
+    "title": "सेटिंग्ज",
+    "selectLanguage": "भाषा निवडा"
   }
 }

@@ -41,6 +41,7 @@
     "locationPlaceholder": "e.g., City, State, Country"
   },
   "settings": {
-    "title": "Settings"
+    "title": "Settings",
+    "selectLanguage": "Select Language"
   }
 }
