@@ -8,6 +8,7 @@ import RainwaterMode from '../components/ChatPage/RainwaterMode.jsx';
 import BestCropMode from '../components/ChatPage/BestCropMode.jsx';
 import WaterResourceMode from '../components/ChatPage/WaterResourceMode.jsx';
 import ChatMessage from '../components/ChatPage/ChatMessage.jsx';
+import { Link } from 'react-router-dom';
 
 const ChatPage = () => {
   const [messages, setMessages] = useState([]);
@@ -187,7 +188,7 @@ const ChatPage = () => {
           fixed md:relative w-72 h-full bg-blue-800 text-white z-40`}
         >
           <div className="p-6 h-full flex flex-col">
-            <h2 className="text-xl font-bold mb-8">S.A.R.O.V.A.R</h2>
+            <h2 className="text-xl font-bold mb-8 font-[Merriweather]"><Link to="/">S.A.R.O.V.A.R</Link></h2>
             <div className="flex-1 space-y-2 overflow-y-auto">
               {sidebarItems.map((item) => (
                 <button

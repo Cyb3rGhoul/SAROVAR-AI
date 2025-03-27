@@ -9,8 +9,8 @@ const Navbar = () => {
     <nav className="px-4 py-4 flex justify-center items-center fixed top-0 left-0 right-0 z-50">
       <div className="bg-white/30 backdrop-blur-md rounded-full px-4 sm:px-6 md:px-10 py-2 sm:py-3 shadow-lg border border-white/20 flex items-center justify-between w-[95%] sm:w-[90%] max-w-6xl">
         {/* Logo */}
-        <Link to="/" className="text-xl sm:text-2xl font-bold text-[#007acc]">
-          SAROVAR
+        <Link to="/" className="text-xl sm:text-2xl font-bold text-[#007acc] font-[Merriweather]">
+          <Link to="/">S.A.R.O.V.A.R</Link>
         </Link>
         
         {/* Navigation Links */}
@@ -20,8 +20,8 @@ const Navbar = () => {
           animate="visible"
         >
           {[
-            { label: "Chatbot", path: "/chat" },
-            { label: "About", path: "/about" }
+            { label: "Chatbot", path: "/chat" }
+            // { label: "About", path: "/about" }
           ].map((item, index) => (
             <Link 
               key={index} 

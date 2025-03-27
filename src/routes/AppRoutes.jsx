@@ -21,7 +21,7 @@ const AppRoutes = () => {
             <Routes>
               <Route path="/" element={<LandingPage />} />
               <Route path="/chat" element={<ChatPage />} />
-              <Route path="/about" element={<AboutPage />} />
+              {/* <Route path="/about" element={<AboutPage />} /> */}
             </Routes>
           </Suspense>
         </div>

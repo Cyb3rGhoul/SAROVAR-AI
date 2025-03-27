@@ -53,7 +53,7 @@ const LandingPage = () => {
               hidden: { opacity: 0, x: -50 }
             }}
             transition={{ duration: 0.6 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#003366] mb-4 sm:mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#003366] mb-4 sm:mb-6 font-[Merriweather]" 
           >
             S.A.R.O.V.A.R
           </motion.h1>
@@ -131,7 +131,7 @@ const LandingPage = () => {
               Get Water Insights Now
             </Link>
             <p className="text-xs sm:text-sm text-gray-500">
-              Available in English, Hindi, and Marathi
+              * Available in English, Hindi, and Marathi
             </p>
           </motion.div>
         </motion.div>
