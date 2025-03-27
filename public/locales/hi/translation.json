@@ -40,7 +40,20 @@
     "noMessagesDescription": "शुरू करने के लिए चैट करें!",
     "locationPlaceholder": "उदा., शहर, राज्य",
     "openPanel": "पैनल खोलें",
-    "closePanel": "पैनल बंद करें"
+    "closePanel": "पैनल बंद करें",
+    "temperature": "तापमान",
+    "humidity": "नमी",
+    "soilType": "मिट्टी का प्रकार",
+    "waterAvailability": "पानी की उपलब्धता",
+    "getReccomendations": "फसल की सिफारिशें प्राप्त करें",
+    "selectSoil": "मिट्टी का प्रकार चुनें",
+    "selectWater": "पानी का स्तर चुनें",
+    "high": "उच्च",
+    "low": "निम्न",
+    "clay": "चिकनी मिट्टी",
+    "sandy": "रेतीली मिट्टी",
+    "loamy": "दोमट मिट्टी",
+    "silty": "गादयुक्त मिट्टी"
   },
   "settings": {
     "title": "सेटिंग्स",

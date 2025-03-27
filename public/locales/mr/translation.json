@@ -40,7 +40,20 @@
     "noMessagesDescription": "सुरू करण्यासाठी चॅट करा!",
     "locationPlaceholder": "उदा., सर्वाधिक स्थान",
     "openPanel": "पैनल उघडा",
-    "closePanel": "पैनल बंद करा"
+    "closePanel": "पैनल बंद करा",
+    "temperature": "तापमान",
+    "humidity": "आर्द्रता",
+    "soilType": "मातीचा प्रकार",
+    "waterAvailability": "पाण्याची उपलब्धता",
+    "getReccomendations": "पीक शिफारसी मिळवा",
+    "selectSoil": "मातीचा प्रकार निवडा",
+    "selectWater": "पाण्याची पातळी निवडा",
+    "high": "उच्च",
+    "low": "कमी",
+    "clay": "चिकण माती",
+    "sandy": "वालुकामय माती",
+    "loamy": "गाळयुक्त माती",
+    "silty": "गाळ माती"
   },
   "settings": {
     "title": "सेटिंग्ज",

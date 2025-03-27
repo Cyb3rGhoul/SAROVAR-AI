@@ -40,7 +40,21 @@
     "noMessagesDescription": "Start chatting to get started!",
     "locationPlaceholder": "e.g., City, State, Country",
     "openPanel": "Open Input Panel",
-    "closePanel": "Close Input Panel"
+    "closePanel": "Close Input Panel",
+    "temperature": "Temperature",
+    "humidity": "Humidity",
+    "soilType": "Soil Type",
+    "waterAvailability": "Water Availability",
+    "getReccomendations": "Get Crop Recommendations",
+    "selectSoil": "Select Soil Type",
+    "selectWater": "Select Water Level",
+    "high": "High",
+    "low": "Low",
+    "clay": "Clay",
+    "sandy": "Sandy",
+    "loamy": "Loamy",
+    "silty": "Silty"
+
   },
   "settings": {
     "title": "Settings",
