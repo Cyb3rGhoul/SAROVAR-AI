@@ -1,28 +1,32 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LandingPage from '../pages/LandingPage.jsx';
-import ChatPage from '../pages/ChatPage.jsx';
-import AboutPage from '../pages/AboutPage.jsx';
 import { LanguageProvider } from '../contexts/LanguageContext.jsx';
-import { ClerkProvider } from '@clerk/clerk-react'
+import Loader from '../components/PreLoader/Loader.jsx';
 
-// Import your Publishable Key
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+const LandingPage = React.lazy(() => import('../pages/LandingPage.jsx'));
+const ChatPage = React.lazy(() => import('../pages/ChatPage.jsx'));
+const AboutPage = React.lazy(() => import('../pages/AboutPage.jsx'));
+
 
 const AppRoutes = () => {
   return (
     <LanguageProvider>
       <Router>
         <div className="flex flex-col min-h-screen">
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/chat" element={<ChatPage />} />
-            <Route path="/about" element={<AboutPage />} />
-          </Routes>
-          {/* <Footer /> */}
+          <Suspense fallback={
+            <div className="flex items-center justify-center min-h-screen">
+              <Loader />
+            </div>
+          }>
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/chat" element={<ChatPage />} />
+              <Route path="/about" element={<AboutPage />} />
+            </Routes>
+          </Suspense>
         </div>
       </Router>
-      </LanguageProvider>
+    </LanguageProvider>
   );
 };
 
