@@ -6,6 +6,7 @@ import { useInView } from 'react-intersection-observer';
 import Navbar from '../components/layout/Navbar';
 import chatimg from "../assets/sarovar.png";
 import Footer from '../components/layout/Footer';
+import { ClerkProvider } from '@clerk/clerk-react'
 
 // Custom hook for animation triggers
 const useScrollAnimation = () => {
@@ -236,10 +237,18 @@ const FeatureSection = () => {
   );
 };
 
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+
+if (!PUBLISHABLE_KEY) {
+  throw new Error("Missing Publishable Key")
+}
+
 const App = () => {
   return (
     <>
-      <Navbar />
+      <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+        <Navbar />
+      </ClerkProvider>
       <LandingPage />
       <FeatureSection />
       <Footer />

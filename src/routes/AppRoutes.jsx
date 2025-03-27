@@ -4,6 +4,10 @@ import LandingPage from '../pages/LandingPage.jsx';
 import ChatPage from '../pages/ChatPage.jsx';
 import AboutPage from '../pages/AboutPage.jsx';
 import { LanguageProvider } from '../contexts/LanguageContext.jsx';
+import { ClerkProvider } from '@clerk/clerk-react'
+
+// Import your Publishable Key
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
 const AppRoutes = () => {
   return (
