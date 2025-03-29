@@ -24,12 +24,12 @@ SAROVAR is an **AI-powered chatbot platform** designed to help rural communities
 
 ## 🛠️ Tech Stack
 
-
 **Frontend:**  
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)  
 ![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)  
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)  
 ![Lucide React](https://img.shields.io/badge/Lucide_React-000000?style=for-the-badge&logo=lucide&logoColor=white)  
+![Clerk](https://img.shields.io/badge/Clerk-3D4ADF?style=for-the-badge&logo=clerk&logoColor=white)  
 
 **Backend:**  
 ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)  
