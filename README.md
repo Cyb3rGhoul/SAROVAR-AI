@@ -55,7 +55,6 @@ SAROVAR is an **AI-powered chatbot platform** designed to help rural communities
 2. **Install dependencies**
    ```bash
    npm install
-   cd client && npm install
    ```
 
 3. **Configure environment variables**  
