@@ -43,6 +43,7 @@ SAROVAR is an **AI-powered chatbot platform** designed to help rural communities
 ### Prerequisites
 - Node.js v18+
 - Google Gemini API key
+- Clerk publishable key
 
 ### Setup Instructions
 
