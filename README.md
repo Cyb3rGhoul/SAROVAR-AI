@@ -24,25 +24,24 @@ SAROVAR is an **AI-powered chatbot platform** designed to help rural communities
 
 ## 🛠️ Tech Stack
 
-**Frontend:**  
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)  
-**Backend:**  
-![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
-![Express](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)  
-**AI/ML:**  
-![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
-![Gemini API](https://img.shields.io/badge/Google_Gemini-4285F4?style=for-the-badge&logo=google&logoColor=white)  
-**Database:**  
-![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)  
 
----
+**Frontend:**  
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)  
+![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)  
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)  
+![Lucide React](https://img.shields.io/badge/Lucide_React-000000?style=for-the-badge&logo=lucide&logoColor=white)  
+
+**Backend:**  
+![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)  
+
+**AI/ML:**  
+![Gemini API](https://img.shields.io/badge/Google_Gemini-4285F4?style=for-the-badge&logo=google&logoColor=white)  
+
 
 ## 🚀 Installation
 
 ### Prerequisites
 - Node.js v18+
-- MongoDB Atlas account
 - Google Gemini API key
 
 ### Setup Instructions
@@ -62,13 +61,13 @@ SAROVAR is an **AI-powered chatbot platform** designed to help rural communities
 3. **Configure environment variables**  
    Create `.env` file in root:
    ```env
-   MONGODB_URI=your_mongodb_connection_string
-   GEMINI_API_KEY=your_google_gemini_key
+   VITE_GEMINI_API_KEY=your_google_gemini_key
+   VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
    ```
 
 4. **Run the application**
    ```bash
-   npm run dev  # Starts both frontend and backend
+   npm run dev  # Start the application
    ```
 
 ---
@@ -91,15 +90,36 @@ SAROVAR is an **AI-powered chatbot platform** designed to help rural communities
 ## 📂 Project Structure
 
 ```
-sarovar/
-├── client/               # Frontend (React/Vite)
-│   ├── public/           # Static assets
-│   └── src/              # React components
-├── server/               # Backend (Node/Express)
-│   ├── models/           # MongoDB schemas
-│   └── routes/           # API endpoints
-├── ml_models/            # Water prediction models
-└── docs/                 # Project documentation
+sarovar/                  # Root project folder
+├── public/               # Static assets
+├── src/                  # Source code
+│   ├── assets/           # Images, icons, etc.
+│   ├── components/       # Reusable components
+│   │   ├── ChatPage/
+│   │   ├── layout/
+│   │   ├── PreLoader/
+│   ├── contexts/         # Context API
+│   │   ├── LanguageContext.jsx
+│   ├── pages/            # Page components
+│   │   ├── AboutPage.jsx
+│   │   ├── ChatPage.jsx
+│   │   ├── LandingPage.jsx
+│   ├── routes/           # Routing files
+│   │   ├── AppRoutes.jsx
+│   │   ├── ClerkProvider.jsx
+│   ├── utils/            # Utility functions
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   ├── main.jsx
+├── .env                  # Environment variables
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+└── README.md
+
 ```
 
 ---
